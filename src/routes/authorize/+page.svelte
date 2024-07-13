@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { PUBLIC_ISSUER } from '$env/static/public'
 
 	onMount(async () => {
 		const url = $page.url;
 		const params = $page.url.searchParams;
 		let locationvariable = url.origin;
-		let finalurl = 'https://dev-hagrhtldk1rkwyp5.us.auth0.com/authorize';
+		let finalurl = `${PUBLIC_ISSUER}authorize`;
 		const identity_redirect_uri = `${locationvariable}/auth/callback/auth1`;
 
 		const generateURLfromParams = async () => {
